@@ -1,0 +1,62 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="transform-origin: 50px 50px 0px;" xml:space="preserve" class=""><g class="" style="transform-origin: 50px 50px 0px; transform: scale(0.6);"><g class="" style="transform-origin: 50px 50px 0px;"><style type="text/css" class="ld ld-heartbeat" style="transform-origin: 50px 50px 0px; animation-duration: 3.1s; animation-delay: -3.1s;">.st0{fill:#000101;} .st1{fill:#1E1E1E;} .st2{fill:#FFFFFF;} .st3{fill:#1D1C1D;} .st4{fill:#FEFFFF;} .st5{fill:#030404;} .st6{fill:#0A0A09;}</style><g class="ld ld-heartbeat" style="transform-origin: 50px 50px 0px; animation-duration: 3.1s; animation-delay: -2.86154s;"><path class="st0" d="M23.082,18.652c0.885,0.15-1.32,5.925-0.09,12.535c1.06,5.66,14.38,27.584,13.83,35.099 c-0.425,4.725-11.36,15.8-12.51,15.06c-1.26-0.345,3.32-7.87,1.62-14.14c-1.97-7.305-13.695-26.204-13.68-34.549 C12.252,26.551,22.287,18.257,23.082,18.652z" fill="#030303" style="fill: rgb(3, 3, 3);"></path></g><g class="ld ld-heartbeat" style="transform-origin: 50px 50px 0px; animation-duration: 3.1s; animation-delay: -2.62308s;"><path class="st0" d="M48.132,10.017c1.12,0.19-1.685,7.565-0.115,15.97c1.35,7.23,18.34,35.184,17.64,44.769 c-0.55,6.03-14.49,20.14-15.965,19.2c-1.595-0.43,4.24-10.025,2.075-18.02c-2.515-9.315-17.46-33.419-17.45-44.059 C34.317,20.087,47.122,9.517,48.132,10.017z" fill="#030303" style="fill: rgb(3, 3, 3);"></path></g><g class="ld ld-heartbeat" style="transform-origin: 50px 50px 0px; animation-duration: 3.1s; animation-delay: -2.38462s;"><path class="st0" d="M73.981,18.652c0.89,0.15-1.315,5.925-0.085,12.535c1.065,5.66,14.38,27.584,13.835,35.099 c-0.42,4.725-11.36,15.8-12.515,15.06c-1.255-0.345,3.32-7.87,1.625-14.14c-1.975-7.31-13.7-26.209-13.685-34.549 c0-6.105,10.05-14.4,10.83-14.005H73.981z" fill="#030303" style="fill: rgb(3, 3, 3);"></path></g><metadata xmlns:d="https://loading.io/stock/" class="ld ld-heartbeat" style="transform-origin: 50px 50px 0px; animation-duration: 3.1s; animation-delay: -2.14615s;">
+<d:name class="ld ld-heartbeat" style="transform-origin: 50px 50px 0px; animation-duration: 3.1s; animation-delay: -1.90769s;">steem</d:name>
+<d:tags class="ld ld-heartbeat" style="transform-origin: 50px 50px 0px; animation-duration: 3.1s; animation-delay: -1.66923s;">steem,brand wb</d:tags>
+<d:license class="ld ld-heartbeat" style="transform-origin: 50px 50px 0px; animation-duration: 3.1s; animation-delay: -1.43077s;">cc0</d:license>
+<d:slug class="ld ld-heartbeat" style="transform-origin: 50px 50px 0px; animation-duration: 3.1s; animation-delay: -1.19231s;">uoffmc</d:slug>
+</metadata></g></g><style type="text/css" class="ld ld-heartbeat" style="transform-origin: 50px 50px 0px; animation-duration: 3.1s; animation-delay: -0.953846s;">path,ellipse,circle,rect,polygon,polyline,line { stroke-width: 0; }@keyframes ld-heartbeat {
+0% {
+-webkit-transform: scale(1.05);
+transform: scale(1.05);
+}
+5% {
+-webkit-transform: scale(1.25);
+transform: scale(1.25);
+}
+39% {
+-webkit-transform: scale(0.9);
+transform: scale(0.9);
+}
+45% {
+-webkit-transform: scale(1.15);
+transform: scale(1.15);
+}
+60% {
+-webkit-transform: scale(1.05);
+transform: scale(1.05);
+}
+100% {
+-webkit-transform: scale(1);
+transform: scale(1);
+}
+}
+@-webkit-keyframes ld-heartbeat {
+0% {
+-webkit-transform: scale(1.05);
+transform: scale(1.05);
+}
+5% {
+-webkit-transform: scale(1.25);
+transform: scale(1.25);
+}
+39% {
+-webkit-transform: scale(0.9);
+transform: scale(0.9);
+}
+45% {
+-webkit-transform: scale(1.15);
+transform: scale(1.15);
+}
+60% {
+-webkit-transform: scale(1.05);
+transform: scale(1.05);
+}
+100% {
+-webkit-transform: scale(1);
+transform: scale(1);
+}
+}
+.ld.ld-heartbeat {
+-webkit-animation: ld-heartbeat 0.8s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+animation: ld-heartbeat 0.8s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+</style></svg>

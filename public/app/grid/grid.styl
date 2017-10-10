@@ -1,0 +1,96 @@
+$error-color = #D50000
+$font-size-basic = 16px
+$input-transition-speed = 0.2s
+$button-transition-speed = 0.2s
+body, input, select, button, textarea
+  font-size: $font-size-basic
+  line-height: 1em
+.grid
+  display: grid
+.input
+  &__error
+    font-size: 0.6em
+    color: $error-color
+.hidden
+  &--xm
+    @media screen and (max-width: 600px)
+      &
+        display: none
+.form
+  display: block
+  &__divider
+    height: 10px
+  &__fieldset
+    border: none
+    display: block
+    position: relative
+    padding: 0
+    margin: 0
+    &:nth-last-of-type(1)
+      input
+        border-bottom: 1px solid #cccccc
+    &--not-empty
+      legend
+        top: 0 !important
+        font-size: 0.7em
+        transition: $input-transition-speed
+  &__input
+    &-text
+      border: none
+      border-top: 1px solid #cccccc
+      outline: none
+      padding: 10px 10px 7px 10px
+      width: 100%
+      box-sizing: border-box
+      & + legend
+        position: absolute
+        top: 13px
+        left: 10px
+        pointer-events: none
+        transition: $input-transition-speed
+.button
+  outline: none
+  border: none
+  padding: 10px 10px 8px 10px
+  cursor: pointer
+  position: relative
+  overflow: hidden
+  opacity: 1
+  transition: $button-transition-speed
+  &:hover
+    opacity: 0.7
+    transition: $button-transition-speed
+  &--margin
+    &-top
+      &-10
+        margin-top: 10px
+  &--fullwidth
+    width: 100%
+  &--default
+    background-color: #212121
+    color: #ffffff
+  &--ripple
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    background-color: rgba(255, 255, 255, 0.7)
+    transform: scale(0)
+    position: absolute
+    opacity: 1
+    pointer-events: none
+    animation: rippleDrop .3s linear
+  &--rounded
+    border-radius: 0.25em
+@keyframes rippleDrop
+  100%
+    transform: scale(2)
+    opacity: 0
+.container
+  width: 900px
+  max-width: 100%
+  position: relative
+  margin: auto
+@media screen and (max-width: 1024px)
+  .hidden
+    &--md
+      display: none
