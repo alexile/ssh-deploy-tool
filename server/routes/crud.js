@@ -19,71 +19,71 @@ Object.keys(models).forEach((name) => {
         model.find(req.body, (err, results) => {
           m.sameUser = results;
           Object.assign(m, req.body);
-          m.save((err) => {
+          m.save((err, msg) => {
             if (err && !m.isExist) {
-              res.json({error: err.toString()});
+              res.json({error: {message: err.message, status: 1}});
             } else if (m.isExist) {
               req.session.user = {
                 login: m.login,
                 date: new Date(),
               };
-              res.json({[name]: req.session.user});
+              res.json({[name]: req.session.user, message: 'You have successfully logged in'});
             } else {
               req.session.user = {
                 login: m.login,
                 date: new Date(),
               };
-              res.json({[name]: req.session.user});
+              res.json({[name]: req.session.user, message: 'This login is out of base: new user created and signed'});
             }
           })
         })
       })
-      .get((req, res) => {
-        model.find((err, results) => {
-          if (err) {
-            res.json({error: err});
-          } else {
-            res.json({[name]: results});
-          }
-        })
-      });
+      // .get((req, res) => {
+      //   model.find((err, results) => {
+      //     if (err) {
+      //       res.json({error: err});
+      //     } else {
+      //       res.json({[name]: results});
+      //     }
+      //   })
+      // });
 
-  router
-    .route(`/${name}s/:_id`)
-      .get((req, res) => {
-        model.findById(req.params._id, (err, results) => {
-          if (err) {
-            res.json({error: err});
-          } else {
-            res.json({[name]: results})
-          }
-        })
-      })
-      .put((req, res) => {
-        model.findById(req.params._id, (err, results) => {
-          if (err) {
-            res.json({error: err});
-          } else {
-            Object.assign(results, req.body);
-            results.save(err => {
-              if (err) {
-                res.json({error: err});
-              } else {
-                res.json({[name]: results});
-              }
-            })
-          }
-        })
-      })
-      .delete((req, res) => {
-        model.remove({_id: req.params._id}, (err) => {
-          if (err) {
-            res.json({error: err});
-          } else {
-            res.json({[name]: req.params._id});
-          }
-        })
-      })
+  // router
+  //   .route(`/${name}s/:_id`)
+  //     .get((req, res) => {
+  //       model.findById(req.params._id, (err, results) => {
+  //         if (err) {
+  //           res.json({error: err});
+  //         } else {
+  //           res.json({[name]: results})
+  //         }
+  //       })
+  //     })
+  //     .put((req, res) => {
+  //       model.findById(req.params._id, (err, results) => {
+  //         if (err) {
+  //           res.json({error: err});
+  //         } else {
+  //           Object.assign(results, req.body);
+  //           results.save(err => {
+  //             if (err) {
+  //               res.json({error: err});
+  //             } else {
+  //               res.json({[name]: results});
+  //             }
+  //           })
+  //         }
+  //       })
+  //     })
+  //     .delete((req, res) => {
+  //       model.remove({_id: req.params._id}, (err) => {
+  //         if (err) {
+  //           res.json({error: err});
+  //         } else {
+  //           res.json({[name]: req.params._id});
+  //         }
+  //       })
+  //     })
 
 })
 

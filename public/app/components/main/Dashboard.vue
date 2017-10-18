@@ -7,12 +7,12 @@
             <li class="dashboard-files__element">
               <i class="material-icons">&#xE2C7;</i> <span>...</span>
             </li>
-            <li class="dashboard-files__element">
+            <!-- <li class="dashboard-files__element">
               <i class="material-icons">&#xE2C7;</i> <span>home</span>
             </li>
             <li class="dashboard-files__element">
               <i class="material-icons">&#xE24D;</i> <span>app.js</span>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -43,6 +43,9 @@
           <div class="dashboard-stands__element">
             Stand2
             <div class="dashboard-stands__loading"></div>
+          </div>
+          <div class="dashboard-stands__element dashboard-stands__element--add">
+            &nbsp;
           </div>
         </div>
       </div>

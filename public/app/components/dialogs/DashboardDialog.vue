@@ -1,6 +1,6 @@
 <template lang="html">
     <div>
-      <form class="dialog">
+      <form class="dialog dialog--wide">
         dasdasd
       </form>
       <div class="wrapper" v-on:click="closeDialog"></div>

@@ -1,12 +1,17 @@
 .snackbar
-  width: 320px
+  width: 300px
   background-color: #212121
   position: fixed
-  bottom: 0
+  bottom: -50px
   left: 0
   right: 0
   margin: auto
   text-align: center
-  padding: 1.2em 0 0.8em 0
+  padding: 1.2em 10px 0.8em 10px
   border-radius: 0.5em 0.5em 0 0
   color: #ffffff
+  z-index: 999
+  transition: 0.7s
+  &--visible
+    bottom: 0
+    transition: 0.7s

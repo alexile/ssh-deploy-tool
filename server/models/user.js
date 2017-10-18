@@ -31,7 +31,7 @@ class UserClass {
       .digest('hex') + config.ps_salt2;
   }
   makeSalt() {
-    return Math.round(new Date().valueOf() * Math.random()) + config.ps_salt1;
+    return Math.round(new Date().valueOf() * Math.random()) + '' + config.ps_salt1;
   }
 }
 
@@ -60,10 +60,12 @@ userSchema.pre('find', function(next) {
 userSchema.pre('save', function(next, metadata) {
   if (this.sameUser.length == 1) {
     this.isExist = this.encryptPassword(this.realPassword, this.sameUser[0].salt) === this.sameUser[0].hashed_password;
-    const err = this.isExist ? new Error('User already exist') : new Error('Wrong password or login');
+    const msg = this.isExist ? {error: {message: 'User already exist'}} : {error: {message: 'Wrong password or login'}};
+    const err = new Error(msg.error.message);
     return next(err);
   } else if(this.sameUser.length > 1) {
-    const err = new Error('Fatal error: multiple users');
+    const msg = {error: {message: 'Fatal error: multiple users'}};
+    const err = new Error(msg.error.message);
     return next(err);
   } else {
     return next();

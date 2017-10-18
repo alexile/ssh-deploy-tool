@@ -6,13 +6,13 @@
     </header>
     <main>
       <div v-if="isCreated">
-        <login v-on:signin="onSignIn" v-if="!isAuth"></login>
+        <login v-on:signin="onSignIn" v-if="!isAuth" v-on:systemMessage="broadcastMessage"></login>
         <dashboard v-if="isAuth"></dashboard>
-        <snackbar></snackbar>
+        <snackbar v-bind:message="systemMessage"></snackbar>
       </div>
     </main>
     <div v-if="isCreated">
-      <team-dialog v-if="isTeamDialog" v-on:closedialog="closeDialog"></team-dialog>
+      <team-dialog v-if="isTeamDialog" v-on:closedialog="closeDialog" v-on:systemMessage="broadcastMessage"></team-dialog>
       <dashboard-dialog v-if="isDashboardDialog" v-on:closedialog="closeDialog"></dashboard-dialog>
     </div>
   </div>
@@ -43,11 +43,20 @@
         isAuth: false,
         isCreated: false,
         isTeam: false,
-        isTeamDialog: true,
+        isTeamDialog: false,
         isDashboardDialog: false,
+        systemMessage: ''
       }
     },
     methods: {
+      broadcastMessage(msg) {
+        const self = this;
+
+        self.systemMessage = msg.message;
+        setTimeout(() => {
+          self.systemMessage = '';
+        }, 5000);
+      },
       onSignIn() {
         this.isAuth = true;
       },

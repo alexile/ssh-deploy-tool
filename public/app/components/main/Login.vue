@@ -16,6 +16,7 @@
 
 <script>
 import axios from 'axios';
+import _ from 'lodash';
 
 axios.interceptors.response.use((res) => {
   return res;
@@ -43,10 +44,13 @@ export default {
     sendLoginrequest(data) {
       axios.post('/api/users', data)
         .then((res) => {
-          if (res.data.user && res.data.user.login) {
+          console.log(res);
+          if (_.get(res, 'data.user.login', false)) {
             this.$emit('signin', res.data.user);
-          } else {
-            //render errors
+            this.$emit('systemMessage', {message: _.get(res, 'data.message')})
+          } else if (_.get(res, 'data.error.message')) {
+            console.log(123)
+            this.$emit('systemMessage', {message: _.get(res, 'data.error.message')})
           }
         })
     },
