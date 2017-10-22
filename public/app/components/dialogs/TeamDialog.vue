@@ -77,11 +77,13 @@ export default {
       const self = this;
       axios.post('/api/team/', data)
         .then((res) => {
+      	console.log(res);
           const err = _.get(res, 'data.error.message', false);
           if (err) {
             self.$emit('systemMessage', {message: err});
           } else {
-            this.closeDialog();
+	          self.$emit('systemMessage', {message: _.get(res, 'data.message')});
+             this.closeDialog();
           }
 
         })

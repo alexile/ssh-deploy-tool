@@ -2,6 +2,7 @@ $error-color = #D50000
 $font-size-basic = 16px
 $input-transition-speed = 0.2s
 $button-transition-speed = 0.2s
+$accent-color = #F54337
 body, input, select, button, textarea
   font-size: $font-size-basic
   line-height: 1em
@@ -26,6 +27,23 @@ body, input, select, button, textarea
     position: relative
     padding: 0
     margin: 0
+    &--inline
+      display: inline-block
+      &:nth-last-of-type(1)
+        &:after
+          display: none
+      &:after
+        content: ''
+        display: block
+        position: absolute
+        height: 2em
+        width: 1px
+        background-color: #cccccc
+        top: 2px
+        right: -5px
+      & .form__input-text
+        border-bottom: 1px solid #cccccc
+        width: 250px
     &:nth-last-of-type(1)
       input
         border-bottom: 1px solid #cccccc
@@ -69,6 +87,9 @@ body, input, select, button, textarea
   &--default
     background-color: #212121
     color: #ffffff
+  &--accent
+    background-color: $accent-color
+    color: #ffffff
   &--ripple
     width: 20px
     height: 20px
@@ -90,6 +111,11 @@ body, input, select, button, textarea
   max-width: 100%
   position: relative
   margin: auto
+.clear
+  &:after
+    content: ''
+    display: block
+    clear: both
 @media screen and (max-width: 1024px)
   .hidden
     &--md

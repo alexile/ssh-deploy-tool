@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./server/www",
-    "dev": "concurrently \"node ./server/www\" \"webpack --watch\""
+    "dev": "concurrently \"node ./server/www\" \"webpack --watch\"",
+    "dev:server": "concurrently \"nodemon ./server/www\" \"webpack --watch\""
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -22,6 +23,7 @@
     "lodash": "^4.17.4",
     "mongoose": "^4.11.13",
     "morgan": "^1.8.2",
+    "node-ssh": "^5.0.0",
     "normalize.css": "^7.0.0",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",

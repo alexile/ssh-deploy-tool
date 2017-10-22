@@ -10,7 +10,6 @@ import Vue from 'vue';
 import 'normalize.css';
 import './grid/grid.styl';
 import './grid/grid.js';
-
 /**
  * Components styles
  */
