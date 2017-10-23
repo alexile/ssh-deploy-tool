@@ -135,7 +135,7 @@ router
 		});
 		stand.save((err) => {
 			if (err) {
-				res.json({error: err});
+				res.json({error: {message: err.message}});
 			} else {
 				res.json({response: 'Success', status: 0, message: 'New stand created'});
 			}

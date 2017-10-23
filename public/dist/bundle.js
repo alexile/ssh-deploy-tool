@@ -35820,6 +35820,9 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.interceptors.response.use(res => {
 		onSignIn() {
 			this.isAuth = true;
 		},
+		updateDashboardData() {
+			this.$emit('dataUpdateInParent', {});
+		},
 		closeDialog() {
 			this.isTeamDialog = false;
 			this.isDashboardDialog = false;
@@ -37214,11 +37217,12 @@ __WEBPACK_IMPORTED_MODULE_1_axios___default.a.interceptors.response.use(res => {
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/api/stand/copy', this.selected.stand).then(res => {
 				const err = __WEBPACK_IMPORTED_MODULE_2_lodash___default.a.get(res, 'data.error.message');
 				const msg = __WEBPACK_IMPORTED_MODULE_2_lodash___default.a.get(res, 'data.message');
-				console.log(res);
+				console.log(err);
 				if (err) {
 					this.$emit('systemMessage', { message: err });
 				} else {
 					this.$emit('systemMessage', { message: msg });
+					this.getStands();
 				}
 				this.isLoading = false;
 			});
@@ -37245,7 +37249,10 @@ __WEBPACK_IMPORTED_MODULE_1_axios___default.a.interceptors.response.use(res => {
 	},
 	created() {
 		this.getStands();
-		this.$parent.$on('updateDashboardData', this.getStands);
+		this.$parent.$on('dataUpdateInParent', () => {
+			console.log('OMG ITS COOL');
+			this.getStands();
+		});
 	},
 	data: () => {
 		return {
@@ -38074,6 +38081,7 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.interceptors.response.use(res => {
         } else {
           self.$emit('systemMessage', { message: __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.get(res, 'data.message') });
           this.closeDialog();
+          this.$emit('updateDashboardData', {});
         }
       });
     },
@@ -38623,11 +38631,12 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.interceptors.response.use(res => {
 		updateStand() {
 			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/api/stand/', this.form).then(res => {
 				const err = __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.get(res, 'data.error.message');
-				const data = __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.get(res, 'data');
+				const msg = __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.get(res, 'data.response.message');
+
 				if (err) {
 					this.$emit('systemMessage', { message: err });
 				} else {
-					this.$emit('systemMessage', { message: data.message });
+					this.$emit('systemMessage', { message: msg });
 					this.$emit('updateDashboardData', {});
 					this.closeDialog();
 				}
@@ -39232,6 +39241,7 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.interceptors.response.use(res => {
                     this.$emit('systemMessage', { message: err });
                 } else {
                     this.$emit('systemMessage', { message: msg });
+                    this.$emit('updateDashboardData', {});
                 }
                 return true;
             }).then(() => {
@@ -39453,7 +39463,10 @@ var render = function() {
               _vm._v(" "),
               _vm.isAuth
                 ? _c("dashboard", {
-                    on: { openstanddialog: _vm.onDialogStand }
+                    on: {
+                      openstanddialog: _vm.onDialogStand,
+                      systemMessage: _vm.broadcastMessage
+                    }
                   })
                 : _vm._e(),
               _vm._v(" "),
@@ -39472,7 +39485,8 @@ var render = function() {
               ? _c("team-dialog", {
                   on: {
                     closedialog: _vm.closeDialog,
-                    systemMessage: _vm.broadcastMessage
+                    systemMessage: _vm.broadcastMessage,
+                    updateDashboardData: _vm.updateDashboardData
                   }
                 })
               : _vm._e(),
@@ -39481,7 +39495,8 @@ var render = function() {
               ? _c("dashboard-dialog", {
                   on: {
                     systemMessage: _vm.broadcastMessage,
-                    closedialog: _vm.closeDialog
+                    closedialog: _vm.closeDialog,
+                    updateDashboardData: _vm.updateDashboardData
                   }
                 })
               : _vm._e(),
@@ -39491,7 +39506,8 @@ var render = function() {
                   attrs: { standDialogData: _vm.standDialogData },
                   on: {
                     systemMessage: _vm.broadcastMessage,
-                    closedialog: _vm.closeDialog
+                    closedialog: _vm.closeDialog,
+                    updateDashboardData: _vm.updateDashboardData
                   }
                 })
               : _vm._e()

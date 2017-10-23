@@ -173,11 +173,12 @@ export default {
 			    .then(res => {
 				    const err = _.get(res, 'data.error.message');
 				    const msg = _.get(res, 'data.message');
-				    console.log(res);
+				    console.log(err);
 				    if (err) {
 					    this.$emit('systemMessage', {message: err});
 				    } else {
 					    this.$emit('systemMessage', {message: msg});
+					    this.getStands();
 				    }
 				    this.isLoading = false;
 			    })
@@ -207,7 +208,10 @@ export default {
     },
 	created() {
   	   this.getStands();
-  	   this.$parent.$on('updateDashboardData', this.getStands);
+  	   this.$parent.$on('dataUpdateInParent', () => {
+  	   	    console.log('OMG ITS COOL');
+	       this.getStands();
+       });
 	},
 	data: () => {
   	    return {

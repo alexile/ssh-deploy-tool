@@ -123,11 +123,12 @@ export default {
 			axios.put('/api/stand/', this.form)
 				.then((res) => {
 					const err = _.get(res, 'data.error.message');
-					const data = _.get(res, 'data');
+					const msg = _.get(res, 'data.response.message');
+
 					if (err) {
 						this.$emit('systemMessage', {message: err});
 					} else {
-						this.$emit('systemMessage', {message: data.message});
+						this.$emit('systemMessage', {message: msg});
 						this.$emit('updateDashboardData', {});
 						this.closeDialog();
 					}

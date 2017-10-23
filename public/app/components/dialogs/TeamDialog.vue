@@ -84,6 +84,7 @@ export default {
           } else {
 	          self.$emit('systemMessage', {message: _.get(res, 'data.message')});
              this.closeDialog();
+	          this.$emit('updateDashboardData', {});
           }
 
         })

@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ffd0d0f-e14f-4060-9b92-79f62da53cce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/components/App.vue" afterPath="$PROJECT_DIR$/public/app/components/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/components/dialogs/DashboardDialog.vue" afterPath="$PROJECT_DIR$/public/app/components/dialogs/DashboardDialog.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/components/dialogs/StandsDialog.vue" afterPath="$PROJECT_DIR$/public/app/components/dialogs/StandsDialog.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/components/dialogs/TeamDialog.vue" afterPath="$PROJECT_DIR$/public/app/components/dialogs/TeamDialog.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/components/main/Dashboard.vue" afterPath="$PROJECT_DIR$/public/app/components/main/Dashboard.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/dist/bundle.js" afterPath="$PROJECT_DIR$/public/dist/bundle.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/api/stand.js" afterPath="$PROJECT_DIR$/server/routes/api/stand.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/api/team.js" afterPath="$PROJECT_DIR$/server/routes/api/team.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,8 +34,8 @@
       <file leaf-file-name="StandsDialog.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/components/dialogs/StandsDialog.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="42" column="19" lean-forward="true" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+            <state relative-caret-position="143">
+              <caret line="112" column="30" lean-forward="true" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
               <folding>
                 <element signature="e#3365#3391#0" expanded="true" />
               </folding>
@@ -46,8 +46,8 @@
       <file leaf-file-name="TeamDialog.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/components/dialogs/TeamDialog.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1748">
-              <caret line="77" column="36" lean-forward="true" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+            <state relative-caret-position="368">
+              <caret line="86" column="52" lean-forward="false" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -56,8 +56,8 @@
       <file leaf-file-name="DashboardDialog.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/components/dialogs/DashboardDialog.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="65" column="20" lean-forward="true" selection-start-line="65" selection-start-column="20" selection-end-line="72" selection-end-column="21" />
+            <state relative-caret-position="235">
+              <caret line="58" column="26" lean-forward="true" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -73,14 +73,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dashboard.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Dashboard.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/components/main/Dashboard.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1716">
-              <caret line="183" column="10" lean-forward="true" selection-start-line="183" selection-start-column="10" selection-end-line="183" selection-end-column="10" />
+            <state relative-caret-position="497">
+              <caret line="212" column="28" lean-forward="false" selection-start-line="212" selection-start-column="28" selection-end-line="212" selection-end-column="28" />
               <folding>
                 <element signature="e#5773#5815#0" expanded="true" />
-                <marker date="1508781438903" expanded="true" signature="3893:4237" ph="..." />
+                <marker date="1508783408397" expanded="true" signature="3893:4237" ph="..." />
               </folding>
             </state>
           </provider>
@@ -89,16 +89,16 @@
       <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/components/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="89" column="51" lean-forward="false" selection-start-line="89" selection-start-column="51" selection-end-line="89" selection-end-column="51" />
+            <state relative-caret-position="437">
+              <caret line="67" column="46" lean-forward="false" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="46" />
               <folding>
-                <element signature="e#1044#1070#0" expanded="true" />
+                <element signature="e#1223#1249#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="161">
@@ -108,21 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboard.styl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/components/main/dashboard.styl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3312">
-              <caret line="144" column="15" lean-forward="false" selection-start-line="144" selection-start-column="15" selection-end-line="144" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="stand.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/routes/api/stand.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="672">
-              <caret line="135" column="29" lean-forward="true" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="29" />
+              <caret line="138" column="20" lean-forward="true" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -156,6 +146,7 @@
       <find>onDialogStand</find>
       <find>users</find>
       <find>currentUserName</find>
+      <find>updateDashboardData</find>
     </findStrings>
     <replaceStrings>
       <replace>['key']</replace>
@@ -171,20 +162,20 @@
         <option value="$PROJECT_DIR$/public/app/app.js" />
         <option value="$PROJECT_DIR$/.eslintrc.json" />
         <option value="$PROJECT_DIR$/server/models/user.js" />
-        <option value="$PROJECT_DIR$/public/app/components/dialogs/TeamDialog.vue" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/server/models/team.js" />
         <option value="$PROJECT_DIR$/public/app/components/dialogs/dialogs.styl" />
         <option value="$PROJECT_DIR$/server/routes/crud.js" />
-        <option value="$PROJECT_DIR$/public/app/components/dialogs/DashboardDialog.vue" />
         <option value="$PROJECT_DIR$/public/app/components/app.styl" />
         <option value="$PROJECT_DIR$/server/models/stand.js" />
         <option value="$PROJECT_DIR$/public/app/grid/grid.styl" />
         <option value="$PROJECT_DIR$/public/app/components/main/dashboard.styl" />
-        <option value="$PROJECT_DIR$/public/app/components/App.vue" />
         <option value="$PROJECT_DIR$/server/routes/api/team.js" />
-        <option value="$PROJECT_DIR$/public/app/components/dialogs/StandsDialog.vue" />
         <option value="$PROJECT_DIR$/server/routes/api/stand.js" />
+        <option value="$PROJECT_DIR$/public/app/components/dialogs/StandsDialog.vue" />
+        <option value="$PROJECT_DIR$/public/app/components/dialogs/TeamDialog.vue" />
+        <option value="$PROJECT_DIR$/public/app/components/dialogs/DashboardDialog.vue" />
+        <option value="$PROJECT_DIR$/public/app/components/App.vue" />
         <option value="$PROJECT_DIR$/public/app/components/main/Dashboard.vue" />
       </list>
     </option>
@@ -377,12 +368,12 @@
       <workItem from="1508587221809" duration="2262000" />
       <workItem from="1508651463924" duration="17084000" />
       <workItem from="1508694969158" duration="1282000" />
-      <workItem from="1508777443264" duration="4085000" />
+      <workItem from="1508777443264" duration="5937000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40632000" />
+    <option name="totallyTimeSpent" value="42484000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -693,14 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/grid/grid.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2691">
-          <caret line="117" column="15" lean-forward="false" selection-start-line="117" selection-start-column="15" selection-end-line="117" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/components/header/header.styl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -725,63 +708,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/routes/api/team.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="649">
           <caret line="97" column="49" lean-forward="true" selection-start-line="97" selection-start-column="49" selection-end-line="97" selection-end-column="49" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/components/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="89" column="51" lean-forward="false" selection-start-line="89" selection-start-column="51" selection-end-line="89" selection-end-column="51" />
-          <folding>
-            <element signature="e#1044#1070#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/api/stand.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="135" column="29" lean-forward="true" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/components/dialogs/DashboardDialog.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="65" column="20" lean-forward="true" selection-start-line="65" selection-start-column="20" selection-end-line="72" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/components/dialogs/TeamDialog.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1748">
-          <caret line="77" column="36" lean-forward="true" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/components/dialogs/StandsDialog.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="42" column="19" lean-forward="true" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
-          <folding>
-            <element signature="e#3365#3391#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -793,14 +724,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/api/stand.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="138" column="20" lean-forward="true" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/components/dialogs/DashboardDialog.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="58" column="26" lean-forward="true" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/components/dialogs/TeamDialog.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="86" column="52" lean-forward="false" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/components/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="67" column="46" lean-forward="false" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="46" />
+          <folding>
+            <element signature="e#1223#1249#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/components/dialogs/StandsDialog.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="112" column="30" lean-forward="true" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
+          <folding>
+            <element signature="e#3365#3391#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/components/main/Dashboard.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1716">
-          <caret line="183" column="10" lean-forward="true" selection-start-line="183" selection-start-column="10" selection-end-line="183" selection-end-column="10" />
+        <state relative-caret-position="497">
+          <caret line="212" column="28" lean-forward="false" selection-start-line="212" selection-start-column="28" selection-end-line="212" selection-end-column="28" />
           <folding>
             <element signature="e#5773#5815#0" expanded="true" />
-            <marker date="1508781438903" expanded="true" signature="3893:4237" ph="..." />
+            <marker date="1508783408397" expanded="true" signature="3893:4237" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/grid/grid.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2691">
+          <caret line="117" column="15" lean-forward="false" selection-start-line="117" selection-start-column="15" selection-end-line="117" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

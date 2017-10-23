@@ -70,6 +70,7 @@ export default {
 	                    this.$emit('systemMessage', {message: err});
                     } else {
 	                    this.$emit('systemMessage', {message: msg});
+	                    this.$emit('updateDashboardData', {});
                     }
                     return true;
                  })

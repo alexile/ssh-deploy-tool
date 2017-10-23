@@ -7,14 +7,14 @@
 		<main>
 			<div v-if="isCreated">
 				<login v-on:signin="onSignIn" v-if="!isAuth" v-on:systemMessage="broadcastMessage"></login>
-				<dashboard v-if="isAuth" v-on:openstanddialog="onDialogStand"></dashboard>
+				<dashboard v-if="isAuth" v-on:openstanddialog="onDialogStand" v-on:systemMessage="broadcastMessage"></dashboard>
 				<snackbar v-bind:message="systemMessage"></snackbar>
 			</div>
 		</main>
 		<div v-if="isCreated">
-			<team-dialog v-if="isTeamDialog" v-on:closedialog="closeDialog" v-on:systemMessage="broadcastMessage"></team-dialog>
-			<dashboard-dialog v-on:systemMessage="broadcastMessage" v-if="isDashboardDialog" v-on:closedialog="closeDialog"></dashboard-dialog>
-			<stand-dialog v-bind:standDialogData="standDialogData" v-on:systemMessage="broadcastMessage" v-if="isStandDialog" v-on:closedialog="closeDialog"></stand-dialog>
+			<team-dialog v-if="isTeamDialog" v-on:closedialog="closeDialog" v-on:systemMessage="broadcastMessage" v-on:updateDashboardData="updateDashboardData"></team-dialog>
+			<dashboard-dialog v-on:systemMessage="broadcastMessage" v-if="isDashboardDialog" v-on:closedialog="closeDialog" v-on:updateDashboardData="updateDashboardData"></dashboard-dialog>
+			<stand-dialog v-bind:standDialogData="standDialogData" v-on:systemMessage="broadcastMessage" v-if="isStandDialog" v-on:closedialog="closeDialog" v-on:updateDashboardData="updateDashboardData"></stand-dialog>
 		</div>
 	</div>
 </template>
@@ -63,6 +63,9 @@
 			},
 			onSignIn() {
 				this.isAuth = true;
+			},
+			updateDashboardData() {
+				this.$emit('dataUpdateInParent', {});
 			},
 			closeDialog() {
 				this.isTeamDialog = false;
