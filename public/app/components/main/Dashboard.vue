@@ -70,7 +70,7 @@
         <div class="dashboard-controls" v-if="selected.stand">
           <div class="dashboard-controls__details">
             <div class="clearfix">
-              <!--<div class="dashboard-controls__title">{{selected.stand.name}}</div>-->
+              <div class="dashboard-controls__title">{{selected.stand.name}}</div>
               <!--<select name="branch" class="dashboard-controls__branch">-->
                 <!--<optgroup label="Popular">-->
                   <!--<option value="master">master</option>-->
@@ -82,12 +82,12 @@
               <!--<div class="dashboard-controls__branch">-->
                 <!--Branch unavailable-->
               <!--</div>-->
-              <fieldset class="form__fieldset form__fieldset--inline" v-bind:class="{'form__fieldset--not-empty': selected.stand.name}">
-			      <input class="form__input-text" type="text" v-on:input="inputField" v-model="selected.stand.name">
-			      <legend class="form__legend">Stand name</legend>
-			    </fieldset>
-              <button class="button">Rename</button>
-              <button class="button">Copy</button>
+              <!--<fieldset class="form__fieldset form__fieldset&#45;&#45;inline" v-bind:class="{'form__fieldset&#45;&#45;not-empty': selected.stand.name}">-->
+			      <!--<input class="form__input-text" type="text" v-on:input="inputField" v-model="selected.stand.name">-->
+			      <!--<legend class="form__legend">Stand name</legend>-->
+			    <!--</fieldset>-->
+              <button class="button" v-on:click="(e) => {openStandDialog(e, selected)}">Edit</button>
+              <button class="button" v-on:click="copyStand">Copy</button>
             </div>
             <ul class="dashboard-controls__info">
               <li><span>Status</span><span>{{selected.stand.status ? 'Active' : 'Out of service'}}</span></li>
@@ -127,9 +127,10 @@ export default {
   name: 'Dashboard',
   components: {Blockchart},
     methods: {
-	    openStandDialog(e) {
+	    openStandDialog(e, data) {
 		    e.preventDefault();
-		    this.$emit('openstanddialog', {});
+		    data = _.get(data, 'stand', null);
+		    this.$emit('openstanddialog', data);
 	    },
 	    selectStand(objName, arrName) {
 	        this.selected.obj = objName;
@@ -167,6 +168,20 @@ export default {
 	    getReversedMessages(arr) {
 	        return arr.reverse();
 	    },
+	    copyStand() {
+		    axios.post('/api/stand/copy', this.selected.stand)
+			    .then(res => {
+				    const err = _.get(res, 'data.error.message');
+				    const msg = _.get(res, 'data.message');
+				    console.log(res);
+				    if (err) {
+					    this.$emit('systemMessage', {message: err});
+				    } else {
+					    this.$emit('systemMessage', {message: msg});
+				    }
+				    this.isLoading = false;
+			    })
+	    },
 	    getStands() {
 	    	axios.get('/api/stand/')
 			    .then((res) => {
@@ -179,7 +194,8 @@ export default {
 	    		    	this.stands = data;
 	    		    	this.selected = {
 					        get stand() {
-						        return data[this.obj][this.arr];
+					        	const dt = _.get(data, `${this.obj}.${this.arr}`, {});
+						        return dt;
 					        },
 	    		    		obj: Object.keys(data)[0],
 					        arr: 0

@@ -63,6 +63,7 @@ router
 	})
 	.put((req, res) => {
 		const data = req.body;
+		const users = _.get(req, 'body.users', []);
 
 		if (!req.session.user.teams.includes(data.name)) {
 			return res.json({error: {message: 'You have not access to update this team'}});
@@ -76,9 +77,44 @@ router
 					if (err) {
 						res.json({error: {message: `Team update error: ${err.message}`}});
 					} else {
-						res.json({
-							message: 'Team structure updated'
+						users.forEach((us, i) => {
+							User.findOne({login: us}, (err, usData) => {
+								if (usData) {
+									if (err) {
+										return res.json({error: {message: `Team update error: ${err.message}`}});
+									}
+									const teams = usData.teams || [];
+
+									if (!teams.find(v => (v === data.name))) {
+										teams.push(data.name);
+										usData.save((err) => {
+											if (err) {
+												res.json({error: {message: `Team update error: ${err.message}`}});
+											} else {
+												if (i === users.length - 1) {
+													res.json({
+														message: 'Team structure updated'
+													});
+												}
+											}
+										});
+									} else {
+										if (i === users.length - 1) {
+											res.json({
+												message: 'Team structure updated'
+											});
+										}
+									}
+								} else {
+									if (i === users.length - 1) {
+										res.json({
+											message: 'Team structure updated'
+										});
+									}
+								}
+							});
 						});
+
 					}
 				});
 			}

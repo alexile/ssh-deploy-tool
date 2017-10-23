@@ -35804,7 +35804,8 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.interceptors.response.use(res => {
 			isTeamDialog: false,
 			isDashboardDialog: false,
 			isStandDialog: false,
-			systemMessage: ''
+			systemMessage: '',
+			standDialogData: null
 		};
 	},
 	methods: {
@@ -35837,10 +35838,11 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.interceptors.response.use(res => {
 			this.isDashboardDialog = true;
 			this.isTeamDialog = false;
 		},
-		onDialogStand() {
+		onDialogStand(data) {
 			this.isDashboardDialog = false;
 			this.isTeamDialog = false;
 			this.isStandDialog = true;
+			this.standDialogData = data || null;
 		}
 	},
 	created() {
@@ -37172,9 +37174,10 @@ __WEBPACK_IMPORTED_MODULE_1_axios___default.a.interceptors.response.use(res => {
 	name: 'Dashboard',
 	components: { Blockchart: __WEBPACK_IMPORTED_MODULE_0__Blockchart_vue__["a" /* default */] },
 	methods: {
-		openStandDialog(e) {
+		openStandDialog(e, data) {
 			e.preventDefault();
-			this.$emit('openstanddialog', {});
+			data = __WEBPACK_IMPORTED_MODULE_2_lodash___default.a.get(data, 'stand', null);
+			this.$emit('openstanddialog', data);
 		},
 		selectStand(objName, arrName) {
 			this.selected.obj = objName;
@@ -37207,6 +37210,19 @@ __WEBPACK_IMPORTED_MODULE_1_axios___default.a.interceptors.response.use(res => {
 		getReversedMessages(arr) {
 			return arr.reverse();
 		},
+		copyStand() {
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/api/stand/copy', this.selected.stand).then(res => {
+				const err = __WEBPACK_IMPORTED_MODULE_2_lodash___default.a.get(res, 'data.error.message');
+				const msg = __WEBPACK_IMPORTED_MODULE_2_lodash___default.a.get(res, 'data.message');
+				console.log(res);
+				if (err) {
+					this.$emit('systemMessage', { message: err });
+				} else {
+					this.$emit('systemMessage', { message: msg });
+				}
+				this.isLoading = false;
+			});
+		},
 		getStands() {
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/stand/').then(res => {
 				const data = __WEBPACK_IMPORTED_MODULE_2_lodash___default.a.get(res, 'data.response', {});
@@ -37216,7 +37232,8 @@ __WEBPACK_IMPORTED_MODULE_1_axios___default.a.interceptors.response.use(res => {
 					this.stands = data;
 					this.selected = {
 						get stand() {
-							return data[this.obj][this.arr];
+							const dt = __WEBPACK_IMPORTED_MODULE_2_lodash___default.a.get(data, `${this.obj}.${this.arr}`, {});
+							return dt;
 						},
 						obj: Object.keys(data)[0],
 						arr: 0
@@ -37475,49 +37492,28 @@ var render = function() {
         ? _c("div", { staticClass: "dashboard-controls" }, [
             _c("div", { staticClass: "dashboard-controls__details" }, [
               _c("div", { staticClass: "clearfix" }, [
+                _c("div", { staticClass: "dashboard-controls__title" }, [
+                  _vm._v(_vm._s(_vm.selected.stand.name))
+                ]),
+                _vm._v(" "),
                 _c(
-                  "fieldset",
+                  "button",
                   {
-                    staticClass: "form__fieldset form__fieldset--inline",
-                    class: {
-                      "form__fieldset--not-empty": _vm.selected.stand.name
+                    staticClass: "button",
+                    on: {
+                      click: function(e) {
+                        _vm.openStandDialog(e, _vm.selected)
+                      }
                     }
                   },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.selected.stand.name,
-                          expression: "selected.stand.name"
-                        }
-                      ],
-                      staticClass: "form__input-text",
-                      attrs: { type: "text" },
-                      domProps: { value: _vm.selected.stand.name },
-                      on: {
-                        input: [
-                          function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.selected.stand.name = $event.target.value
-                          },
-                          _vm.inputField
-                        ]
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("legend", { staticClass: "form__legend" }, [
-                      _vm._v("Stand name")
-                    ])
-                  ]
+                  [_vm._v("Edit")]
                 ),
                 _vm._v(" "),
-                _c("button", { staticClass: "button" }, [_vm._v("Rename")]),
-                _vm._v(" "),
-                _c("button", { staticClass: "button" }, [_vm._v("Copy")])
+                _c(
+                  "button",
+                  { staticClass: "button", on: { click: _vm.copyStand } },
+                  [_vm._v("Copy")]
+                )
               ]),
               _vm._v(" "),
               _c("ul", { staticClass: "dashboard-controls__info" }, [
@@ -38589,7 +38585,11 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.interceptors.response.use(res => {
 		},
 		onSubmit(e) {
 			e.preventDefault();
-			this.saveStand();
+			if (this.isEdit) {
+				this.updateStand();
+			} else {
+				this.saveStand();
+			}
 		},
 		inputField(e) {
 			e.target.value ? e.target.parentNode.classList.add('form__fieldset--not-empty') : e.target.parentNode.classList.remove('form__fieldset--not-empty');
@@ -38620,6 +38620,19 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.interceptors.response.use(res => {
 				}
 			});
 		},
+		updateStand() {
+			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/api/stand/', this.form).then(res => {
+				const err = __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.get(res, 'data.error.message');
+				const data = __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.get(res, 'data');
+				if (err) {
+					this.$emit('systemMessage', { message: err });
+				} else {
+					this.$emit('systemMessage', { message: data.message });
+					this.$emit('updateDashboardData', {});
+					this.closeDialog();
+				}
+			});
+		},
 		getTeams() {
 			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/team/').then(res => {
 				const err = __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.get(res, 'data.error.message');
@@ -38636,6 +38649,7 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.interceptors.response.use(res => {
 			});
 		}
 	},
+	props: ['standDialogData'],
 	data: () => {
 		return {
 			form: {
@@ -38645,11 +38659,20 @@ __WEBPACK_IMPORTED_MODULE_0_axios___default.a.interceptors.response.use(res => {
 				commands: [{ key: '', value: '' }]
 			},
 			changedFields: [],
-			teams: []
+			teams: [],
+			isEdit: false
 		};
 	},
 	created() {
 		this.getTeams();
+		console.log(this.standDialogData);
+		console.log(this.form);
+		if (this.standDialogData) {
+			this.isEdit = true;
+			Object.assign(this.form, this.standDialogData);
+		} else {
+			this.isEdit = false;
+		}
 	}
 });
 
@@ -38675,51 +38698,57 @@ var render = function() {
           }
         },
         [
-          _c("h2", [_vm._v("Add stand")]),
+          _c("h2", [_vm._v(_vm._s(_vm.isEdit ? "Edit stand" : "Add stand"))]),
           _vm._v(" "),
-          _c("fieldset", { staticClass: "form__fieldset" }, [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.team,
-                    expression: "form.team"
+          _c(
+            "fieldset",
+            {
+              staticClass: "form__fieldset",
+              class: { "form__fieldset--not-empty": _vm.form.team }
+            },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.team,
+                      expression: "form.team"
+                    }
+                  ],
+                  staticClass: "form__input-text",
+                  attrs: { type: "text" },
+                  on: {
+                    change: [
+                      function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.form.team = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      },
+                      _vm.inputField
+                    ]
                   }
-                ],
-                staticClass: "form__input-text",
-                class: { "form__fieldset--not-empty": _vm.form.team },
-                attrs: { type: "text" },
-                on: {
-                  change: [
-                    function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.form.team = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
-                    },
-                    _vm.inputField
-                  ]
-                }
-              },
-              _vm._l(_vm.teams, function(team) {
-                return _c("option", { domProps: { value: team.name } }, [
-                  _vm._v(_vm._s(team.name))
-                ])
-              })
-            ),
-            _vm._v(" "),
-            _c("legend", { staticClass: "form__legend" }, [_vm._v("Team")])
-          ]),
+                },
+                _vm._l(_vm.teams, function(team) {
+                  return _c("option", { domProps: { value: team.name } }, [
+                    _vm._v(_vm._s(team.name))
+                  ])
+                })
+              ),
+              _vm._v(" "),
+              _c("legend", { staticClass: "form__legend" }, [_vm._v("Team")])
+            ]
+          ),
           _vm._v(" "),
           _c(
             "fieldset",
@@ -39459,6 +39488,7 @@ var render = function() {
             _vm._v(" "),
             _vm.isStandDialog
               ? _c("stand-dialog", {
+                  attrs: { standDialogData: _vm.standDialogData },
                   on: {
                     systemMessage: _vm.broadcastMessage,
                     closedialog: _vm.closeDialog

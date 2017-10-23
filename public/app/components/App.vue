@@ -14,7 +14,7 @@
 		<div v-if="isCreated">
 			<team-dialog v-if="isTeamDialog" v-on:closedialog="closeDialog" v-on:systemMessage="broadcastMessage"></team-dialog>
 			<dashboard-dialog v-on:systemMessage="broadcastMessage" v-if="isDashboardDialog" v-on:closedialog="closeDialog"></dashboard-dialog>
-			<stand-dialog v-on:systemMessage="broadcastMessage" v-if="isStandDialog" v-on:closedialog="closeDialog"></stand-dialog>
+			<stand-dialog v-bind:standDialogData="standDialogData" v-on:systemMessage="broadcastMessage" v-if="isStandDialog" v-on:closedialog="closeDialog"></stand-dialog>
 		</div>
 	</div>
 </template>
@@ -48,7 +48,8 @@
 				isTeamDialog: false,
 				isDashboardDialog: false,
 				isStandDialog: false,
-				systemMessage: ''
+				systemMessage: '',
+				standDialogData: null
 			}
 		},
 		methods: {
@@ -82,10 +83,11 @@
 				this.isDashboardDialog = true;
 				this.isTeamDialog = false;
 			},
-			onDialogStand() {
+			onDialogStand(data) {
 				this.isDashboardDialog = false;
 				this.isTeamDialog = false;
 				this.isStandDialog = true;
+				this.standDialogData = data || null;
 			}
 		},
 		created() {

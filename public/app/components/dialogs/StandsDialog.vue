@@ -3,9 +3,9 @@
 <div class="dialog dialog--wide dashboard-dialog">
 
   <form class="form" v-on:submit="(e) => {onSubmit(e, key)}">
-    <h2>Add stand</h2>
-    <fieldset class="form__fieldset">
-      <select class="form__input-text" type="text"  v-model="form.team" v-bind:class="{'form__fieldset--not-empty': form.team}" v-on:change="inputField">
+    <h2>{{isEdit ? 'Edit stand' : 'Add stand'}}</h2>
+    <fieldset class="form__fieldset" v-bind:class="{'form__fieldset--not-empty': form.team}">
+      <select class="form__input-text" type="text"  v-model="form.team" v-on:change="inputField">
 		<option v-for="team in teams" v-bind:value="team.name">{{team.name}}</option>
       </select>
       <legend class="form__legend">Team</legend>
@@ -81,7 +81,11 @@ export default {
 		},
 		onSubmit(e) {
 			e.preventDefault();
-			this.saveStand();
+			if (this.isEdit) {
+				this.updateStand();
+			} else {
+				this.saveStand();
+			}
 		},
 		inputField(e) {
 			e.target.value ?
@@ -115,6 +119,20 @@ export default {
 					}
 				})
 		},
+		updateStand() {
+			axios.put('/api/stand/', this.form)
+				.then((res) => {
+					const err = _.get(res, 'data.error.message');
+					const data = _.get(res, 'data');
+					if (err) {
+						this.$emit('systemMessage', {message: err});
+					} else {
+						this.$emit('systemMessage', {message: data.message});
+						this.$emit('updateDashboardData', {});
+						this.closeDialog();
+					}
+				})
+		},
 		getTeams() {
 			axios.get('/api/team/')
 				.then((res) => {
@@ -132,6 +150,7 @@ export default {
 				})
 		}
   },
+	props: ['standDialogData'],
   data: () => {
 	return {
 	  form: {
@@ -141,11 +160,20 @@ export default {
 		  commands: [{key: '', value: ''}]
 	  },
 		changedFields: [],
-		teams: []
+		teams: [],
+		isEdit: false
 	}
   },
 	created() {
 		this.getTeams();
+		console.log(this.standDialogData);
+		console.log(this.form);
+		if (this.standDialogData) {
+			this.isEdit = true;
+			Object.assign(this.form, this.standDialogData);
+		} else {
+			this.isEdit = false;
+		}
 	}
 }
 </script>
