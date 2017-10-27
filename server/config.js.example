@@ -1,0 +1,4 @@
+const config = () => {
+    return {db_address: 'mongodb://mongo/visual'}
+}
+module.exports = config;
