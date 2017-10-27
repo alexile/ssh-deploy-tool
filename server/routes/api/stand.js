@@ -27,7 +27,7 @@ router
 						stand.variables.forEach(s => {
 							variables[s.key] = s.value;
 						});
-						command = command.value.replace(/{{.+}}/g, (v) => {
+						command = command.value.replace(/\{\{(.+?)\}\}/g, (v) => {
 							return variables[v.replace(/[{}]/g, '')];
 						});
 						const ssh = new nodeSsh();
