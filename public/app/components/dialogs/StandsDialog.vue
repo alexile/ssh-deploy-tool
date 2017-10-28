@@ -1,15 +1,14 @@
 <template lang="html">
-<div>
-<div class="dialog dialog--wide dashboard-dialog">
-
-  <form class="form" v-on:submit="(e) => {onSubmit(e, key)}">
-    <h2>{{isEdit ? 'Edit stand' : 'Add stand'}}</h2>
-    <fieldset class="form__fieldset" v-bind:class="{'form__fieldset--not-empty': form.team}">
-      <select class="form__input-text" type="text"  v-model="form.team" v-on:change="inputField">
-		<option v-for="team in teams" v-bind:value="team.name">{{team.name}}</option>
-      </select>
-      <legend class="form__legend">Team</legend>
-    </fieldset>
+	<div>
+		<div class="dialog dialog--wide dashboard-dialog">
+			<form class="form" v-on:submit="(e) => {onSubmit(e, key)}">
+				<h2>{{isEdit ? 'Edit stand' : 'Add stand'}}</h2>
+				<fieldset class="form__fieldset" v-bind:class="{'form__fieldset--not-empty': form.team}">
+					<select class="form__input-text" type="text"  v-model="form.team" v-on:change="inputField">
+						<option v-for="team in teams" v-bind:value="team.name">{{team.name}}</option>
+					</select>
+					<legend class="form__legend">Team</legend>
+				</fieldset>
 	<fieldset class="form__fieldset " v-bind:class="{'form__fieldset--not-empty': form.name}">
       <input class="form__input-text" type="text" v-on:input="inputField" v-model="form.name">
       <legend class="form__legend">Name</legend>
@@ -68,11 +67,11 @@ axios.interceptors.response.use((res) => {
 	return false;
 });
 export default {
-  name: 'StandDialog',
+	name: 'StandDialog',
 	methods: {
-	closeDialog() {
-	  this.$emit('closedialog', {});
-	},
+		closeDialog() {
+			this.$emit('closedialog', {});
+		},
 		addRow(name) {
 			this.form[name].push({key: '', value: ''});
 		},
@@ -92,19 +91,6 @@ export default {
 				e.target.parentNode.classList.add('form__fieldset--not-empty') :
 				e.target.parentNode.classList.remove('form__fieldset--not-empty');
 		},
-//	  getStands() {
-//		  axios.get('/api/stand/')
-//			  .then((res) => {
-//				  console.log(res);
-//				  const err = _.get(res, 'data.error.message');
-//				   const data = _.get(res, 'data.response');
-//				  if (err) {
-//					  this.$emit('systemMessage', {message: err});
-//				  } else {
-////					this.form.stands = data;
-//				  }
-//			  })
-//	  },
 		saveStand() {
 			axios.post('/api/stand/', this.form)
 				.then((res) => {
@@ -113,11 +99,11 @@ export default {
 					if (err) {
 						this.$emit('systemMessage', {message: err});
 					} else {
-					    this.$emit('systemMessage', {message: data.message});
-					    this.$emit('updateDashboardData', {});
-					    this.closeDialog();
+						this.$emit('systemMessage', {message: data.message});
+						this.$emit('updateDashboardData', {});
+						this.closeDialog();
 					}
-				})
+				});
 		},
 		updateStand() {
 			axios.put('/api/stand/', this.form)
@@ -132,7 +118,7 @@ export default {
 						this.$emit('updateDashboardData', {});
 						this.closeDialog();
 					}
-				})
+				});
 		},
 		getTeams() {
 			axios.get('/api/team/')
@@ -148,27 +134,25 @@ export default {
 						}
 						this.teams = data;
 					}
-				})
+				});
 		}
-  },
+	},
 	props: ['standDialogData'],
-  data: () => {
-	return {
-	  form: {
-		name: '',
-		  description: '',
-		  variables: [{key: '', value: ''}],
-		  commands: [{key: '', value: ''}]
-	  },
-		changedFields: [],
-		teams: [],
-		isEdit: false
-	}
-  },
+	data: () => {
+		return {
+			form: {
+				name: '',
+				description: '',
+				variables: [{key: '', value: ''}],
+				commands: [{key: '', value: ''}]
+			},
+			changedFields: [],
+			teams: [],
+			isEdit: false
+		};
+	},
 	created() {
 		this.getTeams();
-		console.log(this.standDialogData);
-		console.log(this.form);
 		if (this.standDialogData) {
 			this.isEdit = true;
 			Object.assign(this.form, this.standDialogData);
@@ -176,5 +160,5 @@ export default {
 			this.isEdit = false;
 		}
 	}
-}
+};
 </script>

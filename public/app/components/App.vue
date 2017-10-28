@@ -50,7 +50,7 @@
 				isStandDialog: false,
 				systemMessage: '',
 				standDialogData: null
-			}
+			};
 		},
 		methods: {
 			broadcastMessage(msg) {
@@ -74,9 +74,9 @@
 			},
 			onSignOut() {
 				axios.delete('/api/session/')
-					.then((res) => {
+					.then(() => {
 						this.isAuth = false;
-					})
+					});
 			},
 			onDialogTeam() {
 				this.isTeamDialog = true;
@@ -99,7 +99,7 @@
 					this.isCreated = true;
 					this.isAuth = !!res.data;
 					this.isTeam = !!res.data.team;
-				})
+				});
 		}
 	}
 </script>
