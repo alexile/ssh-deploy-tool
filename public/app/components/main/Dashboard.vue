@@ -43,7 +43,7 @@
 					</div>
 					<ul class="dashboard-controls__info">
 						<li><span>Status</span><span>{{selected.stand.status ? 'Active' : 'Out of service'}}</span></li>
-						<li><span>Last activity</span><span>{{ new Date()}}</span></li>
+						<li><span>Last activity</span><span>{{ currentTime }}</span></li>
 					</ul>
 				</div>
 				<div>
@@ -66,6 +66,7 @@
 import Terminal from './Terminal.vue';
 import FileNavigator from './FileNavigator.vue';
 import axios from 'axios';
+import moment from 'moment';
 import _ from 'lodash';
 
 axios.interceptors.response.use((res) => {
@@ -187,7 +188,8 @@ export default {
 			stands: {},
 			selected: {},
 			isLoading: false,
-			terminalRaw: []
+			terminalRaw: [],
+			currentTime: moment().format('MMMM Do YYYY, h:mm:ss a')
 		};
 	}
 };
