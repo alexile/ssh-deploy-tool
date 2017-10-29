@@ -39,6 +39,7 @@
 						<div class="dashboard-controls__title">{{selected.stand.name}}</div>
 						<button class="button" v-on:click="(e) => {openStandDialog(e, selected)}">Edit</button>
 						<button class="button" v-on:click="copyStand">Copy</button>
+						<button class="button" v-on:click="removeStand">Remove stand</button>
 					</div>
 					<ul class="dashboard-controls__info">
 						<li><span>Status</span><span>{{selected.stand.status ? 'Active' : 'Out of service'}}</span></li>
@@ -131,6 +132,28 @@ export default {
 						}
 						this.isLoading = false;
 					});
+			},
+			removeStand() {
+				const currentId = _.get(this, 'selected.stand._id', false);
+
+				if (currentId) {
+					this.isLoading = true;
+					axios.delete(`/api/stand/${currentId}`)
+						.then(res => {
+							const err = _.get(res, 'data.error.message');
+							const msg = _.get(res, 'data.response.message');
+
+							if (err) {
+								this.$emit('systemMessage', {message: err});
+							} else {
+								this.$emit('systemMessage', {message: msg});
+								this.getStands();
+							}
+						})
+						.then(() => {
+							this.isLoading = false;
+						});
+				}
 			},
 			getStands() {
 				axios.get('/api/stand/')

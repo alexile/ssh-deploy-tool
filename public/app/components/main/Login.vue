@@ -33,7 +33,7 @@ export default {
         login: '',
         password: '',
       },
-    }
+    };
   },
   methods: {
     onSubmit(e) {
@@ -44,13 +44,11 @@ export default {
     sendLoginrequest(data) {
       axios.post('/api/users', data)
         .then((res) => {
-          console.log(res);
           if (_.get(res, 'data.user.login', false)) {
             this.$emit('signin', res.data.user);
-            this.$emit('systemMessage', {message: _.get(res, 'data.message')})
+            this.$emit('systemMessage', {message: _.get(res, 'data.message')});
           } else if (_.get(res, 'data.error.message')) {
-            console.log(123)
-            this.$emit('systemMessage', {message: _.get(res, 'data.error.message')})
+            this.$emit('systemMessage', {message: _.get(res, 'data.error.message')});
           }
         })
     },

@@ -114,6 +114,28 @@ router
 			}
 		});
 	});
+
+router.route('/:_id')
+	.delete((req, res) => {
+		Stand.findById(req.params._id, (err, st) => {
+			if (_.get(req, 'session.user.teams', []).includes(st.team)) {
+				if (err) {
+					res.json({error: {message: err.message}});
+				} else {
+					Stand.remove({_id: req.params._id}, (err) => {
+						if (err) {
+							res.json({error: {message: err.message}});
+						} else {
+							res.json({response: {message: 'Stand removed'}});
+						}
+					});
+				}
+			} else {
+				res.json({error: {message: 'No access'}});
+			}
+		});
+	});
+
 router
 	.route('/copy')
 	.post((req, res) => {
