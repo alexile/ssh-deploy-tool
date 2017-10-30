@@ -52,7 +52,7 @@
 						<button v-for="(command, i) in selected.stand.commands"
 							v-on:click="(e) => {sendSshRequest(e, i)}"
 							v-bind:class="{'dashboard-controls__element--loading': isLoading}"
-							class="dashboard-controls__element button button--default button--margin-top-10 button--rounded">
+							class="dashboard-controls__element button button--default button--margin-top-10 button--margin-right-10 button--rounded">
 							{{command.key}}
 						</button>
 					</div>
