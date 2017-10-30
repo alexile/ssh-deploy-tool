@@ -6,6 +6,7 @@
     "start": "node ./server/www",
     "dev": "concurrently \"node ./server/www\" \"webpack --watch\"",
     "dev:server": "concurrently \"nodemon ./server/www\" \"webpack --watch\"",
+    "build": "node node_modules/webpack",
     "deploy": "git pull && node node_modules/webpack && export PORT=80 && pm2 restart www"
   },
   "dependencies": {
