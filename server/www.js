@@ -4,8 +4,7 @@ const http = require('http');
 const port = normalizePort(process.env.PORT || '3004');
 app.set('port', port);
 const server = http.createServer(app);
-// const io = require('socket.io').listen(server);
-// const WebsoketRestfull = require('websocket-restfull');
+//const io = require('socket.io').listen(server);
 
 server.listen(port);
 server.on('error', onError);
